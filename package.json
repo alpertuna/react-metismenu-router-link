@@ -2,7 +2,7 @@
   "name": "react-metismenu-router-link",
   "version": "0.1.0",
   "description": "Router link extension for `react-metismenu` menu component",
-  "main": "index.js",
+  "main": "dist/react-metismenu-router-link.min.js",
   "keywords": [
     "react",
     "metismenu",
