@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route } from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 import MetisMenu from 'react-metismenu';
 import RouterLink from '../src/RouterLink';
 
@@ -61,7 +61,7 @@ const App = props => {
 };
 
 render(
-  <Router>
+  <Router history={hashHistory}>
     <Route path="/" component={App}>
       <Route path="menu-1" component={Menu1} />
       <Route path="menu-2" component={Menu2} />
