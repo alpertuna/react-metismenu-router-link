@@ -14,6 +14,10 @@ For full documantion please visit [react-metismenu](https://github.com/alpertuna
 $ npm install --save react-metismenu-router-link
 ```
 
+# Demo
+Here is a simple demo using router link component in `react-metismenu`. [Go to demo](https://alpertuna.github.io/react-metismenu-router-link)
+
+
 # Usage Example
 I think, example is enough to tell.
 
