@@ -1,7 +1,7 @@
 {
   "name": "react-metismenu-router-link",
   "version": "0.1.1",
-  "description": "Router link extension for `react-metismenu` menu component",
+  "description": "Router link extension for `react-metismenu` menu component.",
   "main": "lib/RouterLink.js",
   "keywords": [
     "react",
@@ -17,6 +17,7 @@
   "scripts": {
     "dev-server": "webpack-dev-server --config webpack/dev.conf.js --progress --colors --hot --inline",
     "start": "npm run dev-server",
+    "build-demo": "webpack --config webpack/demo.conf.js --progress --colors",
     "build-dist-js-min": "webpack --config webpack/dist-min.conf.js --progress --colors",
     "build-dist-js": "webpack --config webpack/dist.conf.js --progress --colors",
     "build-dist": "rm -rf dist && npm run build-dist-js && npm run build-dist-js-min",
@@ -29,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alpertuna/react-metismenu.git"
+    "url": "git+https://github.com/alpertuna/react-metismenu-router-link.git"
   },
   "bugs": {
-    "url": "https://github.com/alpertuna/react-metismenu/issues"
+    "url": "https://github.com/alpertuna/react-metismenu-router-link/issues"
   },
-  "homepage": "https://github.com/alpertuna/react-metismenu#readme",
+  "homepage": "https://github.com/alpertuna/react-metismenu-router-link#readme",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-loader": "^6.2.5",
