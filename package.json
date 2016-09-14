@@ -48,14 +48,14 @@
     "eslint-plugin-react": "^6.2.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-metismenu": "^0.4.2",
+    "react-metismenu": "^0.6.0",
     "react-router": "^2.7.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
   },
   "peerDependencies": {
     "react": "^0.14 || ^15.0.0-rc || ^15.0",
-    "react-metismenu": "^0.4.2",
+    "react-metismenu": "^0.6.0",
     "react-router": "^2.7.0"
   }
 }

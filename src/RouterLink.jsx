@@ -7,11 +7,11 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const RouteLink = props => (
+const RouterLink = props => (
   props.toggleSubMenu || props.target
   ? (
     <a
-      className="metismenu-link"
+      className={props.className}
       target={props.target}
       href={props.to}
       onClick={props.toggleSubMenu}
@@ -26,20 +26,15 @@ const RouteLink = props => (
   )
 );
 
-RouteLink.propTypes = {
-  target: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.boolean,
-  ]),
+RouterLink.propTypes = {
+  className: PropTypes.string.isRequired,
+  target: PropTypes.string,
   to: PropTypes.string,
-  toggleSubMenu: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.boolean,
-  ]),
+  toggleSubMenu: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
   ]).isRequired,
 };
 
-export default RouteLink;
+export default RouterLink;

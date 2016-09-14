@@ -32,7 +32,7 @@ const content=[
     {
         icon: 'icon-class-name',
         label: 'Label of Item',
-        to: 'a-route-path'
+        to: 'a-route-path',
     },
     {
         icon: 'icon-class-name',
@@ -41,9 +41,9 @@ const content=[
             {
                 icon: 'icon-class-name',
                 label: 'Sub Menu of Second Item',
-                to: 'another-route-path'
-            }
-        ]
+                to: 'another-route-path',
+            },
+        ],
     },
 ];
 
