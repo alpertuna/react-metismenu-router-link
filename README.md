@@ -6,8 +6,6 @@ Router link extension for `react-metismenu` menu component to work with [react-r
 
 For full documantion please visit [react-metismenu](https://github.com/alpertuna/react-metismenu).
 
-**Important Note:** To use `react-metismenu-router-link`, `react-metismenu` should be at least `v0.4.2`.
-
 # Install
 
 ```console
