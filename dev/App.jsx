@@ -11,13 +11,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
 import MetisMenu from 'react-metismenu';
+//import MetisMenu from '../../react-metismenu/src';
 import RouterLink from '../src/RouterLink';
 
 const Menu1 = () => <div><u>Menu 1 View</u></div>;
 const Menu2 = () => <div><i>Menu 2 View</i></div>;
 const SubMenu = () => <div><s>SubMenu View</s></div>;
 
-const App = props => {
   const menu = [
     {
       icon: 'dashboard',
@@ -48,6 +48,7 @@ const App = props => {
     },
   ];
 
+const App = props => {
   return (
     <div>
       <MetisMenu
