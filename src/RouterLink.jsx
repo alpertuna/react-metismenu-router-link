@@ -6,35 +6,79 @@
 
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import classnames from 'classnames';
 
-const RouterLink = props => (
-  props.toggleSubMenu || props.target
-  ? (
-    <a
-      className={props.className}
-      target={props.target}
-      href={props.to}
-      onClick={props.toggleSubMenu}
-    >
-      {props.children}
-    </a>
-  )
-  : (
-    <Link className="metismenu-link" to={props.to}>
-      {props.children}
-    </Link>
-  )
-);
+class RouterLink extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    if (context.router.isActive({ pathname: props.to })) props.activateMe();
+  }
+  render() {
+    const {
+      className,
+      classNameActive,
+      classNameHasActiveChild,
+      active,
+      hasActiveChild,
+      to,
+      externalLink,
+      hasSubMenu,
+      toggleSubMenu,
+      activateMe,
+      children,
+    } = this.props;
+
+    return (
+      hasSubMenu || externalLink
+      ? (
+        <a
+          className={classnames(
+            className,
+            hasActiveChild && classNameHasActiveChild
+          )}
+          target={externalLink ? '_blank' : undefined}
+          href={to}
+          onClick={toggleSubMenu}
+        >
+          {children}
+        </a>
+      )
+      : (
+        <Link
+          className={classnames(
+            className,
+            active && classNameActive
+          )}
+          to={to}
+          onClick={activateMe}
+        >
+          {children}
+        </Link>
+      )
+    );
+  }
+}
 
 RouterLink.propTypes = {
   className: PropTypes.string.isRequired,
-  target: PropTypes.string,
-  to: PropTypes.string,
+  classNameActive: PropTypes.string.isRequired,
+  classNameHasActiveChild: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  hasActiveChild: PropTypes.bool.isRequired,
+  to: PropTypes.string.isRequired,
+  externalLink: PropTypes.bool,
+  hasSubMenu: PropTypes.bool.isRequired,
   toggleSubMenu: PropTypes.func,
+  activateMe: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
-    PropTypes.array,
     PropTypes.element,
+    PropTypes.array,
   ]).isRequired,
+};
+
+RouterLink.contextTypes = {
+  router: React.PropTypes.object.isRequired,
 };
 
 export default RouterLink;
