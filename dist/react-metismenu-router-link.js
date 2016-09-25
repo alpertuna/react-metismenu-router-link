@@ -60,45 +60,102 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(2);
 
+	var _classnames = __webpack_require__(66);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * src/RouterLink.jsx
-	 * Author: H.Alper Tuna <halpertuna@gmail.com>
-	 * Date: 08.09.2016
-	 */
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var RouteLink = function RouteLink(props) {
-	  return props.toggleSubMenu || props.target ? _react2.default.createElement(
-	    'a',
-	    {
-	      className: 'metismenu-link',
-	      target: props.target,
-	      href: props.to,
-	      onClick: props.toggleSubMenu
-	    },
-	    props.children
-	  ) : _react2.default.createElement(
-	    _reactRouter.Link,
-	    { className: 'metismenu-link', to: props.to },
-	    props.children
-	  );
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * src/RouterLink.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Author: H.Alper Tuna <halpertuna@gmail.com>
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Date: 08.09.2016
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+	var RouterLink = function (_React$Component) {
+	  _inherits(RouterLink, _React$Component);
+
+	  function RouterLink(props, context) {
+	    _classCallCheck(this, RouterLink);
+
+	    var _this = _possibleConstructorReturn(this, (RouterLink.__proto__ || Object.getPrototypeOf(RouterLink)).call(this, props, context));
+
+	    if (context.router.isActive({ pathname: props.to })) props.activateMe();
+	    return _this;
+	  }
+
+	  _createClass(RouterLink, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var className = _props.className;
+	      var classNameActive = _props.classNameActive;
+	      var classNameHasActiveChild = _props.classNameHasActiveChild;
+	      var active = _props.active;
+	      var hasActiveChild = _props.hasActiveChild;
+	      var to = _props.to;
+	      var externalLink = _props.externalLink;
+	      var hasSubMenu = _props.hasSubMenu;
+	      var toggleSubMenu = _props.toggleSubMenu;
+	      var activateMe = _props.activateMe;
+	      var children = _props.children;
+
+
+	      return hasSubMenu || externalLink ? _react2.default.createElement(
+	        'a',
+	        {
+	          className: (0, _classnames2.default)(className, hasActiveChild && classNameHasActiveChild),
+	          target: externalLink ? '_blank' : undefined,
+	          href: to,
+	          onClick: toggleSubMenu
+	        },
+	        children
+	      ) : _react2.default.createElement(
+	        _reactRouter.Link,
+	        {
+	          className: (0, _classnames2.default)(className, active && classNameActive),
+	          to: to,
+	          onClick: activateMe
+	        },
+	        children
+	      );
+	    }
+	  }]);
+
+	  return RouterLink;
+	}(_react2.default.Component);
+
+	RouterLink.propTypes = {
+	  className: _react.PropTypes.string.isRequired,
+	  classNameActive: _react.PropTypes.string.isRequired,
+	  classNameHasActiveChild: _react.PropTypes.string.isRequired,
+	  active: _react.PropTypes.bool.isRequired,
+	  hasActiveChild: _react.PropTypes.bool.isRequired,
+	  to: _react.PropTypes.string.isRequired,
+	  externalLink: _react.PropTypes.bool,
+	  hasSubMenu: _react.PropTypes.bool.isRequired,
+	  toggleSubMenu: _react.PropTypes.func,
+	  activateMe: _react.PropTypes.func.isRequired,
+	  children: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.array]).isRequired
 	};
 
-	RouteLink.propTypes = {
-	  target: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.boolean]),
-	  to: _react.PropTypes.string,
-	  toggleSubMenu: _react.PropTypes.oneOfType([_react.PropTypes.func, _react.PropTypes.boolean]),
-	  children: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.element]).isRequired
+	RouterLink.contextTypes = {
+	  router: _react2.default.PropTypes.object.isRequired
 	};
 
-	exports.default = RouteLink;
+	exports.default = RouterLink;
 
 /***/ },
 /* 1 */
@@ -2994,8 +3051,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _Actions = __webpack_require__(15);
-
 	var _computeChangedRoutes2 = __webpack_require__(33);
 
 	var _computeChangedRoutes3 = _interopRequireDefault(_computeChangedRoutes2);
@@ -3044,10 +3099,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    return (0, _isActive3.default)(location, indexOnly, state.location, state.routes, state.params);
-	  }
-
-	  function createLocationFromRedirectInfo(location) {
-	    return history.createLocation(location, _Actions.REPLACE);
 	  }
 
 	  var partialNextState = void 0;
@@ -3106,7 +3157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    function handleErrorOrRedirect(error, redirectInfo) {
-	      if (error) callback(error);else callback(null, createLocationFromRedirectInfo(redirectInfo));
+	      if (error) callback(error);else callback(null, redirectInfo);
 	    }
 	  }
 
@@ -3269,7 +3320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          if (error) {
 	            listener(error);
 	          } else if (redirectLocation) {
-	            history.transitionTo(redirectLocation);
+	            history.replace(redirectLocation);
 	          } else if (nextState) {
 	            listener(null, nextState);
 	          } else {
@@ -4509,7 +4560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  propTypes: {
-	    to: oneOfType([string, object]).isRequired,
+	    to: oneOfType([string, object]),
 	    query: object,
 	    hash: string,
 	    state: object,
@@ -4569,6 +4620,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var router = this.context.router;
 
 	    if (router) {
+	      // If user does not specify a `to` prop, return an empty anchor tag.
+	      if (to == null) {
+	        return _react2.default.createElement('a', props);
+	      }
+
 	      var location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
 	      props.href = router.createHref(location);
 
@@ -5374,6 +5430,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }return target;
 	};
 
+	var _Actions = __webpack_require__(15);
+
 	var _invariant = __webpack_require__(11);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
@@ -5438,7 +5496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  history = (0, _RouterUtils.createRoutingHistory)(history, transitionManager);
 
 	  transitionManager.match(location, function (error, redirectLocation, nextState) {
-	    callback(error, redirectLocation, nextState && _extends({}, nextState, {
+	    callback(error, redirectLocation && router.createLocation(redirectLocation, _Actions.REPLACE), nextState && _extends({}, nextState, {
 	      history: history,
 	      router: router,
 	      matchContext: { history: history, transitionManager: transitionManager, router: router }
@@ -6212,6 +6270,71 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = (0, _createRouterHistory2.default)(_createHashHistory2.default);
 	module.exports = exports['default'];
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames() {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if ("function" === 'function' && _typeof(__webpack_require__(67)) === 'object' && __webpack_require__(67)) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	})();
+
+/***/ },
+/* 67 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }
 /******/ ])
