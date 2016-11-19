@@ -15,9 +15,9 @@
     <div style="float:left;">
       <h2>Library Versions</h2>
       <ul>
-        <li>react-metismenu <b>v1.1.1</b></li>
+        <li>react-metismenu <b>v1.1.3</b></li>
         <li>react-metismenu-router-link <b>v1.0.0</b></li>
-        <li>react-router <b>v2.7.0</b></li>
+        <li>react-router <b>v3.0.0</b></li>
       </ul>
       <h2>Application</h2>
       <div id="root"></div>
@@ -35,48 +35,46 @@ const Menu1 = () =&gt; &lt;div&gt;&lt;u&gt;Menu 1 View&lt;/u&gt;&lt;/div&gt;;
 const Menu2 = () =&gt; &lt;div&gt;&lt;i&gt;Menu 2 View&lt;/i&gt;&lt;/div&gt;;
 const SubMenu = () =&gt; &lt;div&gt;&lt;s&gt;SubMenu View&lt;/s&gt;&lt;/div&gt;;
 
-const App = props =&gt; {
-  const menu = [
-    {
-      icon: 'dashboard',
-      label: 'Menu 1',
-      to: 'menu-1',
-    },
-    {
-      icon: 'bell',
-      label: 'Menu 2',
-      to: 'menu-2',
-    },
-    {
-      icon: 'bolt',
-      label: 'Menu 3',
-      content: [
-        {
-          icon: 'bolt',
-          label: 'Sub Menu',
-          to: 'sub-menu',
-        },
-      ],
-    },
-    {
-      icon: 'external-link',
-      label: 'External Link',
-      externalLink: true,
-      to: 'https://www.google.com',
-    },
-  ];
+const menu = [
+  {
+    icon: 'dashboard',
+    label: 'Menu 1',
+    to: 'menu-1',
+  },
+  {
+    icon: 'bell',
+    label: 'Menu 2',
+    to: 'menu-2',
+  },
+  {
+    icon: 'bolt',
+    label: 'Menu 3',
+    content: [
+      {
+        icon: 'bolt',
+        label: 'Sub Menu',
+        to: 'sub-menu',
+      },
+    ],
+  },
+  {
+    icon: 'external-link',
+    label: 'External Link',
+    externalLink: true,
+    to: 'https://www.google.com',
+  },
+];
 
-  return (
-    &lt;div&gt;
-      &lt;MetisMenu
-        content={menu}
-        LinkComponent={RouterLink}
-      /&gt;
-      &lt;h2&gt;Page Content&lt;/h2&gt;
-      {props.children || "Greeter Page"}
-    &lt;/div&gt;
-  );
-};
+const App = (props) =&gt; (
+  &lt;div&gt;
+    &lt;MetisMenu
+      content={menu}
+      LinkComponent={RouterLink}
+    /&gt;
+    &lt;h2&gt;Page Content&lt;/h2&gt;
+    {props.children || "Greeter Page"}
+  &lt;/div&gt;
+);
 
 render(
   &lt;Router history={hashHistory}&gt;
