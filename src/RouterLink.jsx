@@ -9,10 +9,10 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 
 class RouterLink extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    if (context.router.isActive({ pathname: props.to })) props.activateMe();
+  componentWillMount() {
+    if (this.context.router.isActive({ pathname: this.props.to })) {
+      this.props.activateMe();
+    }
   }
   render() {
     const {
