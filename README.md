@@ -52,7 +52,7 @@ const App = () => (
 );
 
 ReactDOM.render(
-  <Router>
+  <Router  history={hashHistory}>
     <Route path="/" component={App} />
   </Router>,
   document.getElementById('root')
