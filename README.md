@@ -22,7 +22,7 @@ I think, example is enough to tell.
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link } from 'react-router';
+import { Router, Route, Link, hashHistory } from 'react-router';
 import Menu from 'react-metismenu';
 import RouterLink from 'react-metismenu-router-link';
 
