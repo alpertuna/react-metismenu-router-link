@@ -32,7 +32,6 @@ class RouterLink extends React.Component {
       externalLink,
       hasSubMenu,
       toggleSubMenu,
-      activateMe,
       children,
     } = this.props;
 
