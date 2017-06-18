@@ -9,14 +9,10 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, hashHistory, Link } from 'react-router';
+import { BrowserRouter, Link, Route } from 'react-router-dom'
 import MetisMenu from 'react-metismenu';
 //import MetisMenu from '../../react-metismenu/src';
 import RouterLink from '../src/RouterLink';
-
-const Menu1 = () => <div><u>Menu 1 View</u></div>;
-const Menu2 = () => <div><i>Menu 2 View</i></div>;
-const SubMenu = () => <div><s>SubMenu View</s></div>;
 
 const menu = [
   {
@@ -48,28 +44,30 @@ const menu = [
   },
 ];
 
-const App = props => {
-  return (
-    <div>
-      <MetisMenu
-        content={menu}
-        LinkComponent={RouterLink}
-      />
-      <h2>Page Content</h2>
-      <Link to="menu-1">External Menu 1</Link>
-      <Link to="menu-2">External Menu 2</Link>
-      {props.children || "Greeter Page"}
-    </div>
-  );
-};
+const Menu1 = () => <div><u>Menu 1 View</u></div>;
+const Menu2 = () => <div><i>Menu 2 View</i></div>;
+const SubMenu = () => <div><s>SubMenu View</s></div>;
 
-render(
-  <Router history={hashHistory}>
-    <Route path="/" component={App}>
+const App = () => (
+  <div>
+    <MetisMenu
+      content={menu}
+      LinkComponent={RouterLink}
+    />
+    <h2>Page Content</h2>
+    <Link to="menu-1">External Menu 1</Link>
+    <Link to="menu-2">External Menu 2</Link>
+    <div>
       <Route path="menu-1" component={Menu1} />
       <Route path="menu-2" component={Menu2} />
       <Route path="sub-menu" component={SubMenu} />
-    </Route>
-  </Router>,
+    </div>
+  </div>
+);
+
+render(
+  <BrowserRouter>
+    <Route path="/" component={App} />
+  </BrowserRouter>,
   document.getElementById('root')
 );

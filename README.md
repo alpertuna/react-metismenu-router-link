@@ -22,39 +22,39 @@ I think, example is enough to tell.
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router';
-import Menu from 'react-metismenu';
+import { BrowserRouter, Link, Route } from 'react-router-dom'
+import MetisMenu from 'react-metismenu';
 import RouterLink from 'react-metismenu-router-link';
 
-const content=[
-    {
+const content = [
+  {
+    icon: 'icon-class-name',
+    label: 'Label of Item',
+    to: 'a-route-path',
+  },
+  {
+    icon: 'icon-class-name',
+    label: 'Second Item',
+    content: [
+      {
         icon: 'icon-class-name',
-        label: 'Label of Item',
-        to: 'a-route-path',
-    },
-    {
-        icon: 'icon-class-name',
-        label: 'Second Item',
-        content: [
-            {
-                icon: 'icon-class-name',
-                label: 'Sub Menu of Second Item',
-                to: 'another-route-path',
-            },
-        ],
-    },
+        label: 'Sub Menu of Second Item',
+        to: 'another-route-path',
+      },
+    ],
+  },
 ];
 
 const App = () => (
   <div>
-    <Menu content={content} LinkComponent={RouterLink} />
+    <MetisMenu content={content} LinkComponent={RouterLink} />
   </div>
 );
 
 ReactDOM.render(
-  <Router  history={hashHistory}>
+  <BrowserRouter>
     <Route path="/" component={App} />
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 ```

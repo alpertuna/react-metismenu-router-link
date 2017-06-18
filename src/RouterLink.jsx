@@ -5,12 +5,19 @@
  */
 
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 class RouterLink extends React.Component {
   componentWillMount() {
-    if (this.context.router.isActive({ pathname: this.props.to })) {
+    this.to = this.props.to;
+    if (this.to[0] !== '/') this.to = `/${this.to}`;
+
+    this.context.router.history.listen(this.onLocationChange.bind(this));
+    this.onLocationChange(this.context.router.route);
+  }
+  onLocationChange(e) {
+    if ((e.pathname || '/') === this.to) {
       this.props.activateMe();
     }
   }
@@ -51,7 +58,6 @@ class RouterLink extends React.Component {
             active && classNameActive
           )}
           to={to}
-          onClick={activateMe}
         >
           {children}
         </Link>
