@@ -58,9 +58,9 @@ const App = () => (
     <Link to="menu-1">External Menu 1</Link>
     <Link to="menu-2">External Menu 2</Link>
     <div>
-      <Route path="menu-1" component={Menu1} />
-      <Route path="menu-2" component={Menu2} />
-      <Route path="sub-menu" component={SubMenu} />
+      <Route path="/menu-1" component={Menu1} />
+      <Route path="/menu-2" component={Menu2} />
+      <Route path="/sub-menu" component={SubMenu} />
     </div>
   </div>
 );
